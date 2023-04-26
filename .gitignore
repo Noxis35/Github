@@ -1,32 +1,75 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <queue>
+#include <string>
+#include <algorithm>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+// Линейный поиск
+int linear_search(int arr[], int n, int x)
+{
+    for (int i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i;
+    return -1;
+}
 
-# Precompiled Headers
-*.gch
-*.pch
+// Бинарный поиск
+int main () {
+int arr[] = {1,3,5,7,9,11};
+int n = sizeof(arr) / sizeof(arr[0]);
+int x = 7;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+if (binary_search (arr, arr + n,x))
+    cout << "Element Massivte tabyldy";
+else 
+    cout << "Element massivte tabylmady";
+    
+return 0;
+}
 
-# Fortran module files
-*.mod
-*.smod
+// Интерполяцийқ іздеу
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
 
-# Executables
-*.exe
-*.out
-*.app
+int interpolation_search(int arr[], int n, int x)
+{
+    int lo = 0, hi = n - 1;
+    while (lo <= hi && x >= arr[lo] && x <= arr[hi])
+    {
+        int pos = lo + ((double)(hi - lo) / (arr[hi] - arr[lo])) * (x - arr[lo]);
+        if (arr[pos] == x)
+            return pos;
+        if (arr[pos] < x)
+            lo = pos + 1;
+        else
+            hi = pos - 1;
+    }
+    return -1;
+}
+
+int main()
+{
+    int arr[] = { 2, 3, 4, 5, 6, 7, 8 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 5;
+    int result = interpolation_search(arr, n, x);
+    if (result == -1)
+        cout << "element tabylmady" << endl;
+    else
+        cout << "element tabyldy,pozicisy : " << result << endl;
+    return 0;
+}
+
+    //хэш-таблица
+   int main(){
+   int keys [100] = {0};
+   string values [100] = {""};
+   // 42 кілтіне мән қосу
+   keys[42] = 42;
+   values [42] = "42";
+   //42 кілтінін мәнін алу
+   string value = values[42];
+   
+   cout << "42 kilti ushin san : " << value << endl;
+   
+   return 0;
+   }
